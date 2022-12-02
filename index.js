@@ -27,20 +27,44 @@ const stateToEmoji = {
     durability : '🏋🏻‍♂️',
     power : '🔥',
     combat : '💣'
+
 }
 
-const getStatHTML = (character) => {
+const getPowerStatHTML = (character) => {
     const stats = Object.keys(character.powerstats).map(stat =>{
         return `<p> ${stateToEmoji[stat]}${stat.toUpperCase()} : ${character.powerstats[stat]}</p>`
     })
-    return stats.join('');
+    return `<h3> Power Stats </h3>` +  stats.join('');
 }
 
-const showInfo = (character) => {
+const getAppearanceHTML = (character) => {
+    const stats = Object.keys(character.appearance).map(stat =>{
+        return `<p>${stat.toUpperCase()} : ${character.appearance[stat]}</p>`
+    })
+    return `<h3> Appearance </h3>` + stats.join('');
+}
+
+const getWorkHTML = (character) => {
+    const stats = Object.keys(character.work).map(stat =>{
+        return `<p>${stat.toUpperCase()} : ${character.work[stat]}</p>`
+    })
+    return `<h3> Work </h3>` + stats.join('');
+}
+
+const getConnectionsHTML  = (character) => {
+    const stats = Object.keys(character.connections).map(stat =>{
+        return `<p>${stat.toUpperCase()} : ${character.connections[stat]}</p>`
+    })
+    return `<h3> Connections </h3>` + stats.join('');
+}
+ const showInfo = (character) => {
     const name = `<h2> ${character.name} </h2>`
     const image = `<img src="${character.image.url}" alt="${character.name}" height=200 width=200/>`
-    const statHTML = getStatHTML(character);
-    heroImageDiv.innerHTML = `${name} ${image} ${statHTML}`;
+    const powerstatHTML = getPowerStatHTML(character);
+    const appearanceHTML = getAppearanceHTML(character);
+    const workHTML = getWorkHTML(character);
+    const connectionsHTML = getConnectionsHTML(character);
+    heroImageDiv.innerHTML = `${name} ${image} ${appearanceHTML} ${powerstatHTML} ${workHTML} ${connectionsHTML}` ;
 } 
 
 const getSearchedSuperHero = (name) => {
