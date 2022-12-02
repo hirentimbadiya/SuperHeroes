@@ -5,18 +5,18 @@ body {
 }
 button,
 input {
-    font-weight: bold;
+  font-weight: bold;
   border: 2.5px solid black;
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 12px;
   padding: 5px;
   margin: 3px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 button:hover {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);

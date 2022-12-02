@@ -10,7 +10,7 @@ const getRandomSuperHero = (id) => {
             const superHero = json;
             showInfo(superHero);
         }
-    )
+        )
 }
 
 // const intelligence = `<p> 🧠 intelligence : ${json.powerstats.intelligence} </p>`
@@ -21,51 +21,55 @@ const getRandomSuperHero = (id) => {
 // const combat = `<p> 💣 combat : ${json.powerstats.combat} </p>`
 
 const stateToEmoji = {
-    intelligence :'🧠',
-    strength : '💪🏻',
-    speed : '⚡',
-    durability : '🏋🏻‍♂️',
-    power : '🔥',
-    combat : '💣'
+    intelligence: '🧠',
+    strength: '💪🏻',
+    speed: '⚡',
+    durability: '🏋🏻‍♂️',
+    power: '🔥',
+    combat: '💣'
 
 }
 
+// it takes the keys from json.powerstats and makes a string of p tag inside the powerstate and 
+// maps the all the string and returns the innner html string.
 const getPowerStatHTML = (character) => {
-    const stats = Object.keys(character.powerstats).map(stat =>{
+    const stats = Object.keys(character.powerstats).map(stat => {
         return `<p> ${stateToEmoji[stat]}${stat.toUpperCase()} : ${character.powerstats[stat]}</p>`
     })
-    return `<h3> Power Stats </h3>` +  stats.join('');
+    return `<h3> Power Stats </h3>` + stats.join('');
 }
 
 const getAppearanceHTML = (character) => {
-    const stats = Object.keys(character.appearance).map(stat =>{
+    const stats = Object.keys(character.appearance).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.appearance[stat]}</p>`
     })
     return `<h3> Appearance </h3>` + stats.join('');
 }
 
 const getWorkHTML = (character) => {
-    const stats = Object.keys(character.work).map(stat =>{
+    const stats = Object.keys(character.work).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.work[stat]}</p>`
     })
     return `<h3> Work </h3>` + stats.join('');
 }
 
-const getConnectionsHTML  = (character) => {
-    const stats = Object.keys(character.connections).map(stat =>{
+const getConnectionsHTML = (character) => {
+    const stats = Object.keys(character.connections).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.connections[stat]}</p>`
     })
     return `<h3> Connections </h3>` + stats.join('');
 }
- const showInfo = (character) => {
+
+// it shows the name , image , powerstats , appearance , work and connections
+const showInfo = (character) => {
     const name = `<h2> ${character.name} </h2>`
     const image = `<img src="${character.image.url}" alt="${character.name}" height=200 width=200/>`
     const powerstatHTML = getPowerStatHTML(character);
     const appearanceHTML = getAppearanceHTML(character);
     const workHTML = getWorkHTML(character);
     const connectionsHTML = getConnectionsHTML(character);
-    heroImageDiv.innerHTML = `${name} ${image} ${appearanceHTML} ${powerstatHTML} ${workHTML} ${connectionsHTML}` ;
-} 
+    heroImageDiv.innerHTML = `${name} ${image} ${appearanceHTML} ${powerstatHTML} ${workHTML} ${connectionsHTML}`;
+}
 
 const getSearchedSuperHero = (name) => {
     fetch(`${BASE_URL}/search/${name}`)
