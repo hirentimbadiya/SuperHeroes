@@ -36,28 +36,28 @@ const getPowerStatHTML = (character) => {
     const stats = Object.keys(character.powerstats).map(stat => {
         return `<p> ${stateToEmoji[stat]}${stat.toUpperCase()} : ${character.powerstats[stat]}</p>`
     })
-    return `<h3> Power Stats </h3>` + stats.join('');
+    return `<h2> Power Stats </h2>` + stats.join('');
 }
 
 const getAppearanceHTML = (character) => {
     const stats = Object.keys(character.appearance).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.appearance[stat]}</p>`
     })
-    return `<h3> Appearance </h3>` + stats.join('');
+    return `<h2> Appearance </h2>` + stats.join('');
 }
 
 const getWorkHTML = (character) => {
     const stats = Object.keys(character.work).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.work[stat]}</p>`
     })
-    return `<h3> Work </h3>` + stats.join('');
+    return `<h2> Work </h2>` + stats.join('');
 }
 
 const getConnectionsHTML = (character) => {
     const stats = Object.keys(character.connections).map(stat => {
         return `<p>${stat.toUpperCase()} : ${character.connections[stat]}</p>`
     })
-    return `<h3> Connections </h3>` + stats.join('');
+    return `<h2> Connections </h2>` + stats.join('');
 }
 
 // it shows the name , image , powerstats , appearance , work and connections
