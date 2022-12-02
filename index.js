@@ -7,10 +7,8 @@ const getRandomSuperHero = (id) => {
         .then(response => response.json())
         .then(json => {
             console.log(json.powerstats);
-            const name = `<h2> ${json.name} </h2>`
-            const statHTML = getStatHTML(json);
-            heroImageDiv.innerHTML = `${name} <img src="${json.image.url}" alt="${json.name}" height=200 width=200/>
-            ${statHTML}`
+            const superHero = json;
+            showInfo(superHero);
         }
     )
 }
@@ -38,15 +36,19 @@ const getStatHTML = (character) => {
     return stats.join('');
 }
 
+const showInfo = (character) => {
+    const name = `<h2> ${character.name} </h2>`
+    const image = `<img src="${character.image.url}" alt="${character.name}" height=200 width=200/>`
+    const statHTML = getStatHTML(character);
+    heroImageDiv.innerHTML = `${name} ${image} ${statHTML}`;
+} 
+
 const getSearchedSuperHero = (name) => {
     fetch(`${BASE_URL}/search/${name}`)
         .then(response => response.json())
         .then(json => {
             const hero = json.results[0];
-            const namehero = `<h2> ${name.toUpperCase()} </h2>`
-            const statHTML = getStatHTML(hero);
-            heroImageDiv.innerHTML = ` ${namehero}<img src="${hero.image.url}" alt="${name}" height=200 width=200/>
-            ${statHTML}`
+            showInfo(hero);
         }
         )
 }
