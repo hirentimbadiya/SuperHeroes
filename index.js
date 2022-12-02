@@ -93,3 +93,6 @@ const randomHero = () => {
     const max = 731
     return Math.ceil(Math.random() * max)
 }
+
+// for calling when page refreshes
+getSearchedSuperHero('Iron Man');
