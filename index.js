@@ -6,7 +6,7 @@ const getRandomSuperHero = (id) => {
     fetch(`${BASE_URL}/${id}`)
         .then(response => response.json())
         .then(json => {
-            console.log(json.powerstats);
+            // console.log(json.powerstats);
             const superHero = json;
             showInfo(superHero);
         }
